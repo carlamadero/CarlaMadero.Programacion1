@@ -1,0 +1,83 @@
+// SINTAXIS BASICA
+
+switch (expresión) {
+    case valor1:
+        // Código a ejecutar si expresión == valor1
+        break; // Termina el bloque
+    case valor2:
+        // Código a ejecutar si expresión == valor2
+        break;
+    // ...
+    default:
+        // Código a ejecutar si ninguno de los casos anteriores coincide
+        break;
+}
+
+// EJEMPLO
+
+switch (expresión) {
+    case valor1:
+        // Código a ejecutar si expresión == valor1
+        break; // Termina el bloque
+    case valor2:
+        // Código a ejecutar si expresión == valor2
+        break;
+    // ...
+    default:
+        // Código a ejecutar si ninguno de los casos anteriores coincide
+        break;
+}
+
+// EJEMPLO
+
+import java.util.Scanner;
+
+public class SwitchConStrings {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese un día de la semana: ");
+        String dia = scanner.nextLine();
+
+        switch (dia.toLowerCase()) { // Convertir a minúsculas para evitar errores
+            case "lunes":
+                System.out.println("Inicio de la semana.");
+                break;
+            case "viernes":
+                System.out.println("Casi fin de semana.");
+                break;
+            case "sábado":
+            case "domingo":
+                System.out.println("Es fin de semana.");
+                break;
+            default:
+                System.out.println("Día no válido.");
+                break;
+        }
+
+        scanner.close();
+    }
+}
+
+//EJEMPLO
+
+public class AgrupacionSwitch {
+    public static void main(String[] args) {
+        int mes = 7;
+
+        switch (mes) {
+            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                System.out.println("El mes tiene 31 días.");
+                break;
+            case 4: case 6: case 9: case 11:
+                System.out.println("El mes tiene 30 días.");
+                break;
+            case 2:
+                System.out.println("El mes tiene 28 o 29 días.");
+                break;
+            default:
+                System.out.println("Mes no válido.");
+                break;
+        }
+    }
+}
