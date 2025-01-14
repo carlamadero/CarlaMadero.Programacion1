@@ -1,0 +1,110 @@
+// METODOS ESTATICOS
+
+// DECLARACION
+
+class UnaClase {
+
+    // CÓDIGO de la clase UnaClase
+
+    public static void unMetodo() {
+        // CODIGO DEL MÉTODO unMetodo()
+    }
+
+    // MÁS CÓDIGO de la clase UnaClase
+
+}
+
+// USO
+
+class UnaClase {
+
+    public static void main(String[] args){
+
+        // CÓDIGO DEL MÉTODO main
+
+        unMetodo();
+
+        // MAS CÓDIGO DEL MÉTODO main
+
+    }
+
+    public static void unMetodo() {
+        // CÓDIGO DEL MÉTODO unMetodo()
+    }
+
+    // MÁS CÓDIGO de la clase UnaClase
+
+}
+
+// EJEMPLO 1: METODO ESTATICO PARA SUMAR DOS NUMEROS
+
+class Utilidad {
+    static int sumar(int a, int b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        int resultado = Utilidad.sumar(5, 10); // Llamada al método estático
+        System.out.println("Resultado: " + resultado);
+    }
+}
+
+// EJEMPLO 2: USO DE METODOS ESTATICOS EN MATH
+
+public class Main {
+    public static void main(String[] args) {
+        double raiz = Math.sqrt(16);  // Llama al método estático Math.sqrt()
+        double potencia = Math.pow(2, 3); // Llama al método estático Math.pow()
+
+        System.out.println("Raíz cuadrada de 16: " + raiz);
+        System.out.println("2 elevado a la 3: " + potencia);
+    }
+}
+
+// EJEMPLO 3: USO DE String.valueOf()
+
+public class Main {
+    public static void main(String[] args) {
+        int numero = 42;
+        String texto = String.valueOf(numero); // Convierte un entero a String
+        System.out.println("Texto convertido: " + texto);
+    }
+}
+
+
+// EJEMPLO 4: PUNTOS DE ENTRADA DE UN PROGRAMA
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hola, mundo!");
+    }
+}
+
+
+// EJEMPLO 5: PATRON SINGLETON
+
+class Singleton {
+    private static Singleton instancia;
+
+    private Singleton() {
+        // Constructor privado
+    }
+
+    public static Singleton obtenerInstancia() {
+        if (instancia == null) {
+            instancia = new Singleton();
+        }
+        return instancia;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Singleton obj1 = Singleton.obtenerInstancia();
+        Singleton obj2 = Singleton.obtenerInstancia();
+
+        System.out.println(obj1 == obj2); // true, ambos son la misma instancia
+    }
+}
