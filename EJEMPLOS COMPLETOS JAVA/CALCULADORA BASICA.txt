@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+public class CalculadoraBasica {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean salir = false;
+
+        while (!salir) {
+            System.out.println("=== Calculadora Básica ===");
+            System.out.println("1. Suma");
+            System.out.println("2. Resta");
+            System.out.println("3. Multiplicación");
+            System.out.println("4. División");
+            System.out.println("5. Salir");
+            System.out.print("Elige una opción: ");
+
+            int opcion = scanner.nextInt();
+
+            if (opcion == 5) {
+                salir = true;
+                System.out.println("Saliendo de la calculadora. ¡Adiós!");
+                continue;
+            }
+
+            // Solicitar números al usuario
+            System.out.print("Ingresa el primer número: ");
+            double num1 = scanner.nextDouble();
+
+            System.out.print("Ingresa el segundo número: ");
+            double num2 = scanner.nextDouble();
+
+            // Realizar la operación seleccionada
+            switch (opcion) {
+                case 1:
+                    System.out.println("Resultado de la suma: " + (num1 + num2));
+                    break;
+                case 2:
+                    System.out.println("Resultado de la resta: " + (num1 - num2));
+                    break;
+                case 3:
+                    System.out.println("Resultado de la multiplicación: " + (num1 * num2));
+                    break;
+                case 4:
+                    if (num2 != 0) {
+                        System.out.println("Resultado de la división: " + (num1 / num2));
+                    } else {
+                        System.out.println("Error: No se puede dividir entre cero.");
+                    }
+                    break;
+                default:
+                    System.out.println("Opción no válida. Por favor, elige una opción del 1 al 5.");
+            }
+
+            System.out.println(); // Espacio para separar operaciones
+        }
+
+        scanner.close();
+    }
+}

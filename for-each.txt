@@ -1,0 +1,54 @@
+// FOR- EACH EN JAVA ES UNA ESTRUCTURA DE CONTROL QUE PERMITE ITERAR FACILMENTE SOBRE 
+// COLECCIONES Y ARREGLOS SIN LA NECESIDAD DE GESTIONAR INDICES MANUALMENTE.
+
+// SINTAXIS GENERAL
+
+for (Tipo elemento : colección/array) {
+    // Código para procesar cada elemento
+}
+
+-Tipo: El tipo de dato de los elementos en la colección o arreglo.
+-elemento: Una variable que representa el elemento actual de la iteración.
+-colección/array: La colección (como una lista, conjunto, etc.) o el arreglo que estás recorriendo.
+
+// ITERACION SOBRE ARREGLOS
+
+public class Main {
+    public static void main(String[] args) {
+        int[] numeros = {1, 2, 3, 4, 5};
+
+        // Iterar usando for-each
+        for (int num : numeros) {
+            System.out.println("Número: " + num);
+        }
+    }
+}
+
+Número: 1
+Número: 2
+Número: 3
+Número: 4
+Número: 5
+
+// ITERACION SORE MATRICES MULTIDIMENSIONALES
+
+public class Main {
+    public static void main(String[] args) {
+        int[][] matriz = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+        for (int[] fila : matriz) {
+            for (int num : fila) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+1 2 3
+4 5 6
+7 8 9
