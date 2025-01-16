@@ -1,0 +1,158 @@
+// REALIZA OPERACIONES ARITMETICAS BASICAS
+
+public class Calculadora {
+
+    // Métodos estáticos para operaciones matemáticas
+    public static int sumar(int a, int b) {
+        return a + b;
+    }
+
+    public static int restar(int a, int b) {
+        return a - b;
+    }
+
+    public static int multiplicar(int a, int b) {
+        return a * b;
+    }
+
+    public static double dividir(double a, double b) {
+        if (b == 0) {
+            throw new ArithmeticException("No se puede dividir entre cero.");
+        }
+        return a / b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Llamar a métodos estáticos de la clase Calculadora
+        System.out.println("Suma: " + Calculadora.sumar(10, 5));
+        System.out.println("Resta: " + Calculadora.restar(10, 5));
+        System.out.println("Multiplicación: " + Calculadora.multiplicar(10, 5));
+        System.out.println("División: " + Calculadora.dividir(10, 2));
+    }
+}
+
+// EJEMPLO QUE CONVIERTE UNIDADES
+
+public class Conversor {
+
+    // Método estático para convertir kilómetros a millas
+    public static double kilometrosAMillas(double kilometros) {
+        return kilometros * 0.621371;
+    }
+
+    // Método estático para convertir millas a kilómetros
+    public static double millasAKilometros(double millas) {
+        return millas / 0.621371;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        double km = 10.0;
+        double millas = 6.2;
+
+        System.out.println(km + " km en millas: " + Conversor.kilometrosAMillas(km));
+        System.out.println(millas + " millas en kilómetros: " + Conversor.millasAKilometros(millas));
+    }
+}
+
+// VERIFICAR SI UN CORREO ELECTRONICO TIENE UN FORMATO VALIDO
+
+public class Validador {
+
+    // Método estático para validar un correo electrónico
+    public static boolean esCorreoValido(String correo) {
+        return correo.matches("^[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        String correo1 = "ejemplo@correo.com";
+        String correo2 = "correo_invalido";
+
+        System.out.println("¿Es válido el correo1? " + Validador.esCorreoValido(correo1)); // true
+        System.out.println("¿Es válido el correo2? " + Validador.esCorreoValido(correo2)); // false
+    }
+}
+
+// CLASE UTILIDAD CON UN CONTADOR ESTATICO
+
+public class Contador {
+
+    private static int contador = 0;
+
+    // Método estático para incrementar el contador
+    public static void incrementar() {
+        contador++;
+    }
+
+    // Método estático para obtener el valor actual del contador
+    public static int obtenerValor() {
+        return contador;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Llamadas al método estático
+        Contador.incrementar();
+        Contador.incrementar();
+        Contador.incrementar();
+
+        System.out.println("Valor del contador: " + Contador.obtenerValor()); // Imprime: 3
+    }
+}
+
+// USO DE METODO ESTATICO PARA UNA CONSTANTE O CALCULO GLOBAL
+
+public class Geometria {
+
+    // Constante estática
+    public static final double PI = 3.14159265359;
+
+    // Método estático para calcular el área de un círculo
+    public static double calcularAreaCirculo(double radio) {
+        return PI * radio * radio;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        double radio = 5.0;
+        System.out.println("Área del círculo: " + Geometria.calcularAreaCirculo(radio));
+    }
+}
+
+// PATRON SINGLETON
+
+public class Singleton {
+
+    // Instancia única de la clase
+    private static Singleton instancia;
+
+    // Constructor privado para evitar instanciación externa
+    private Singleton() {}
+
+    // Método estático para obtener la instancia única
+    public static Singleton getInstancia() {
+        if (instancia == null) {
+            instancia = new Singleton();
+        }
+        return instancia;
+    }
+
+    public void mostrarMensaje() {
+        System.out.println("¡Soy la única instancia de Singleton!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Obtener la instancia única del Singleton
+        Singleton singleton = Singleton.getInstancia();
+        singleton.mostrarMensaje();
+    }
+}
