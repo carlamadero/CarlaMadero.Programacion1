@@ -1,0 +1,166 @@
+// 1. BUCLE FOR BASICO
+
+public class ForBasico {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("Número: " + i);
+        }
+    }
+}
+Número: 1
+Número: 2
+...
+Número: 10
+
+// 2. BUCLE FOR DECRECIENTE
+
+public class ForDecreciente {
+    public static void main(String[] args) {
+        for (int i = 10; i >= 1; i--) {
+            System.out.println("Número: " + i);
+        }
+    }
+}
+Número: 10
+Número: 9
+...
+Número: 1
+
+// 3. SUMAR NUMEROS DEL 1 AL 100
+
+public class SumaFor {
+    public static void main(String[] args) {
+        int suma = 0;
+        for (int i = 1; i <= 100; i++) {
+            suma += i; // suma = suma + i
+        }
+        System.out.println("La suma de los números del 1 al 100 es: " + suma);
+    }
+}
+La suma de los números del 1 al 100 es: 5050
+
+// 4. ITERAR UN ARRAY
+
+public class ForArray {
+    public static void main(String[] args) {
+        int[] numeros = {10, 20, 30, 40, 50};
+        
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.println("Elemento en índice " + i + ": " + numeros[i]);
+        }
+    }
+}
+Elemento en índice 0: 10
+Elemento en índice 1: 20
+...
+Elemento en índice 4: 50
+
+// 5. USAR UN BUCLE FOR-EACH
+
+public class ForEach {
+    public static void main(String[] args) {
+        String[] nombres = {"Ana", "Luis", "Carlos", "Marta"};
+        
+        for (String nombre : nombres) {
+            System.out.println("Nombre: " + nombre);
+        }
+    }
+}
+Nombre: Ana
+Nombre: Luis
+Nombre: Carlos
+Nombre: Marta
+
+// 6. IMPRIMIR UNA TABLA DE MULTIPLICAR
+
+public class TablaMultiplicar {
+    public static void main(String[] args) {
+        int numero = 5; // Cambia este número para otras tablas
+        
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(numero + " x " + i + " = " + (numero * i));
+        }
+    }
+}
+5 x 1 = 5
+5 x 2 = 10
+...
+5 x 10 = 50
+
+// 7. GENERAR UNA PIRAMIDE DE ASTERISCOS
+
+public class Piramide {
+    public static void main(String[] args) {
+        int altura = 5; // Número de filas de la pirámide
+        
+        for (int i = 1; i <= altura; i++) {
+            // Imprimir espacios
+            for (int j = 1; j <= altura - i; j++) {
+                System.out.print(" ");
+            }
+            // Imprimir asteriscos
+            for (int k = 1; k <= (2 * i - 1); k++) {
+                System.out.print("*");
+            }
+            System.out.println(); // Nueva línea
+        }
+    }
+}
+    *
+   ***
+  *****
+ *******
+*********
+
+// 8. NUMEROS PARES ENTRE 1 Y 20
+
+public class NumerosPares {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 20; i++) {
+            if (i % 2 == 0) {
+                System.out.println("Par: " + i);
+            }
+        }
+    }
+}
+Par: 2
+Par: 4
+...
+Par: 20
+
+// 9. BUCLE INFINITO
+
+public class BucleInfinito {
+    public static void main(String[] args) {
+        for (;;) {
+            System.out.println("Este es un bucle infinito");
+        }
+    }
+}
+Este bucle nunca se detendrá, a menos que lo rompas manualmente (por ejemplo, con break).
+
+// 10. BUSCAR UN ELEMENTO EN UN ARRAY
+
+public class BuscarElemento {
+    public static void main(String[] args) {
+        int[] numeros = {5, 8, 12, 20, 30};
+        int buscar = 20;
+        boolean encontrado = false;
+        
+        for (int i = 0; i < numeros.length; i++) {
+            if (numeros[i] == buscar) {
+                encontrado = true;
+                break; // Detener el bucle cuando se encuentra el número
+            }
+        }
+        
+        if (encontrado) {
+            System.out.println("El número " + buscar + " está en el array.");
+        } else {
+            System.out.println("El número " + buscar + " no está en el array.");
+        }
+    }
+}
+El número 20 está en el array.
+
+
