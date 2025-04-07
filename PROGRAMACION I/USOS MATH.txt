@@ -1,0 +1,69 @@
+// 1. REDONDEO
+
+Math.round(double a): Redondea al entero más cercano.
+Math.ceil(double a): Redondea hacia arriba (techo).
+Math.floor(double a): Redondea hacia abajo (suelo).
+
+// ej.
+
+System.out.println(Math.round(5.5));  // 6
+System.out.println(Math.ceil(5.1));  // 6.0
+System.out.println(Math.floor(5.9)); // 5.0
+
+// 2. POTENCIAS Y RAICES
+
+Math.pow(double a, double b): Eleva a a la potencia b.
+Math.sqrt(double a): Calcula la raíz cuadrada de a.
+
+// ej.
+
+System.out.println(Math.pow(2, 3)); // 8.0 (2^3)
+System.out.println(Math.sqrt(16)); // 4.0
+
+// 3. FUNCIONES TRIGONOMETRICAS
+
+Math.sin(double a): Calcula el seno de a (en radianes).
+Math.cos(double a): Calcula el coseno de a (en radianes).
+Math.tan(double a): Calcula la tangente de a (en radianes).
+
+// ej.
+
+double radianes = Math.toRadians(45); // Convierte grados a radianes
+System.out.println(Math.sin(radianes)); // 0.7071...
+System.out.println(Math.cos(radianes)); // 0.7071...
+System.out.println(Math.tan(radianes)); // 1.0
+
+// 4. LOGARITMOS Y EXPONENCIALES
+
+Math.log(double a): Logaritmo natural (base e) de a.
+Math.log10(double a): Logaritmo en base 10 de a.
+Math.exp(double a): Calcula e^a
+
+// ej.
+
+System.out.println(Math.log(10));   // 2.302585...
+System.out.println(Math.log10(100)); // 2.0
+System.out.println(Math.exp(1));     // 2.718281... (e^1)
+
+// 5. MAXIMO, MINIMO Y VALORES ABSOLUTOS
+
+Math.max(double a, double b): Devuelve el mayor de a y b.
+Math.min(double a, double b): Devuelve el menor de a y b.
+Math.abs(double a): Devuelve el valor absoluto de a.
+
+// ej.
+
+System.out.println(Math.max(5, 10)); // 10
+System.out.println(Math.min(5, 10)); // 5
+System.out.println(Math.abs(-7.5));  // 7.5
+
+// 6. NUMEROS ALEATORIOS
+
+Math.random(): Genera un número aleatorio entre 0.0 (inclusive) y 1.0 (exclusivo).
+
+// ej. 
+
+double aleatorio = Math.random(); // Número entre 0.0 y 1.0
+int aleatorioEntero = (int)(Math.random() * 10); // Número entre 0 y 9
+System.out.println(aleatorio);
+System.out.println(aleatorioEntero);

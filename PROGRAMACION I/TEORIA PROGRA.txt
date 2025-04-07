@@ -1,0 +1,121 @@
+Para prepararte para un examen de Java, es importante que te enfoques en los conceptos clave del lenguaje, su sintaxis, y las áreas comunes que suelen evaluarse. Aquí tienes un resumen de las principales áreas que deberías dominar:
+
+---
+
+### **1. Fundamentos de Java**
+- **Tipos de datos básicos**: `int`, `double`, `float`, `char`, `boolean`, etc.
+- **Variables** y su declaración/inicialización.
+- **Operadores**:
+  - Aritméticos: `+`, `-`, `*`, `/`, `%`.
+  - Relacionales: `==`, `!=`, `>`, `<`, `>=`, `<=`.
+  - Lógicos: `&&`, `||`, `!`.
+  - De asignación: `=`, `+=`, `-=`, etc.
+- **Estructuras de control**:
+  - Condicionales: `if`, `else`, `else if`, `switch`.
+  - Ciclos: `for`, `while`, `do-while`.
+
+---
+
+### **2. Programación orientada a objetos (POO)**
+- **Clases y Objetos**:
+  - Declaración y uso de clases.
+  - Crear objetos con `new`.
+  - Métodos: definición, parámetros y retorno.
+- **Encapsulamiento**:
+  - Modificadores de acceso: `public`, `private`, `protected`, (default).
+  - Métodos `getter` y `setter`.
+- **Herencia**:
+  - Uso de `extends`.
+  - Superclases y subclases.
+  - Uso de la palabra clave `super`.
+- **Polimorfismo**:
+  - Métodos sobrescritos (`@Override`).
+  - Métodos sobrecargados.
+- **Abstracción**:
+  - Clases abstractas (`abstract`) y métodos abstractos.
+  - Interfaces.
+- **Constructores**:
+  - Constructor por defecto y parametrizado.
+  - Uso del constructor en inicialización.
+
+---
+
+### **3. Manejo de excepciones**
+- **Bloques try-catch-finally**.
+- Uso de `throw` y `throws`.
+- Jerarquía de excepciones: `Exception`, `RuntimeException`, `IOException`, etc.
+- Excepciones personalizadas.
+
+---
+
+### **4. Colecciones y Arrays**
+- **Arreglos**:
+  - Unidimensionales y multidimensionales.
+  - Métodos comunes (`length`, iteraciones con `for`).
+- **Colecciones de Java (API `java.util`)**:
+  - Listas (`ArrayList`, `LinkedList`).
+  - Conjuntos (`HashSet`, `TreeSet`).
+  - Mapas (`HashMap`, `TreeMap`).
+  - Iteración con `for-each` o usando iteradores.
+
+---
+
+### **5. Clases importantes del API de Java**
+- **Strings**:
+  - Métodos comunes: `length()`, `charAt()`, `substring()`, `equals()`, `compareTo()`, etc.
+- **Math**:
+  - Métodos comunes: `Math.pow()`, `Math.sqrt()`, `Math.random()`, etc.
+- **Wrapper Classes**:
+  - Autoboxing y unboxing (`Integer`, `Double`, etc.).
+- **Fecha y tiempo**:
+  - Uso de clases como `LocalDate`, `LocalTime`, `LocalDateTime` (API moderna de Java 8+).
+  - Clases antiguas como `Date` y `Calendar`.
+
+---
+
+### **6. Entrada/Salida (I/O)**
+- Leer datos de consola:
+  - Uso de `Scanner`.
+- Escritura/lectura de archivos:
+  - Clases como `File`, `FileReader`, `BufferedReader`, `FileWriter`, `BufferedWriter`.
+
+---
+
+### **7. Programación funcional y Streams (Java 8+)**
+- **Lambdas**:
+  - Sintaxis básica: `(param) -> expresión`.
+- **Streams**:
+  - Operaciones comunes: `filter()`, `map()`, `forEach()`, `collect()`.
+- **Interfaz funcional**:
+  - Uso de interfaces como `Function`, `Predicate`, `Consumer`.
+
+---
+
+### **8. Temas adicionales que podrían aparecer**
+- **Hilos (Threads)**:
+  - Creación con `Thread` y `Runnable`.
+  - Métodos importantes: `start()`, `run()`, `sleep()`, `join()`.
+- **Palabras clave importantes**:
+  - `static`, `final`, `this`, `super`, `synchronized`.
+- **Serialización**:
+  - Clases que implementan `Serializable`.
+
+---
+
+### **9. Buenas prácticas y preguntas comunes**
+- Comparar objetos con `equals()` en lugar de `==`.
+- Saber diferenciar entre `==` (referencias) y `equals()` (valores).
+- Uso correcto de estructuras de datos según el caso de uso.
+- Identificación de errores comunes, como `NullPointerException`.
+
+---
+
+### **10. Ejercicios prácticos**
+Resuelve ejercicios básicos y avanzados para practicar conceptos:
+1. Crear una calculadora básica.
+2. Generar números primos hasta un número dado.
+3. Ordenar una lista de números.
+4. Crear una jerarquía de clases (por ejemplo, animales o vehículos).
+5. Leer y escribir archivos de texto.
+
+Si tienes un área específica en la que te gustaría profundizar, házmelo saber, ¡y te ayudo con más detalles!

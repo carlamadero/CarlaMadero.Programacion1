@@ -1,0 +1,28 @@
+// realizar un programa que simule un inicio de sesión solicitando el nombre del usuario y la //contraseña, para posteriormente comprarlos y mostrar un mensaje en pantalla que diga: //inicio de sesión correcto / nombre de usuario o password incorrectos
+
+
+
+import java.util.Scanner;
+
+public class Login{
+  public static void main(String args[]){
+
+  String usuario = "", password = "";
+  Scanner entrada = new Scanner(System.in);
+
+  System.out.print("Ingresa tu nombre de usuario: ");
+  usuario = entrada.nextLine(); // usuario es el nombre de la variable
+
+  System.out.print("Ingresa tu contraseña: ");
+  password = entrada.nextLine(); //password es el nombre de una variable
+
+  if(usuario.equals("ernesto") && password.equals("123456")){
+   System.out.println("Inicio de sesión correcto");
+  } else {
+      System.out.println("Nombre de usuario o contraseña incorrectos");
+  }
+ }
+}
+
+
+//.equals: sirve para comparar
