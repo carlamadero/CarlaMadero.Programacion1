@@ -1,0 +1,17 @@
+public class Chequeo {
+    public static void verificarEdad(int edad) {
+        if (edad < 18) {
+            System.out.println("Eres menor de edad.");
+            return; // Termina el método aquí
+        }
+
+        System.out.println("Eres mayor de edad.");
+    }
+
+    public static void main(String[] args) {
+        verificarEdad(16); // Imprime: Eres menor de edad.
+    }
+}
+
+//Aunque el método es void (no devuelve nada), se puede usar return; para salir anticipadamente.
+

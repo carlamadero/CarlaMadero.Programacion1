@@ -1,0 +1,12 @@
+public class Ejemplo {
+    public static int obtenerSuma(int a, int b) {
+        return a + b; // Devuelve la suma
+    }
+
+    public static void main(String[] args) {
+        int resultado = obtenerSuma(5, 3);
+        System.out.println("Resultado: " + resultado); // Imprime 8
+    }
+}
+
+//Aquí return a + b; devuelve la suma de los dos números al método main.

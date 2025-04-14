@@ -1,0 +1,22 @@
+public class Persona {
+    String nombre;
+    int edad;
+
+    // Constructor
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    // Método que devuelve un objeto Persona
+    public static Persona crearPersona(String nombre, int edad) {
+        return new Persona(nombre, edad); // Devuelve un nuevo objeto
+    }
+
+    public static void main(String[] args) {
+        Persona p = crearPersona("Lucía", 30);
+        System.out.println("Nombre: " + p.nombre + ", Edad: " + p.edad);
+    }
+}
+
+// Aquí se devuelve un objeto de tipo Persona desde el método crearPersona.

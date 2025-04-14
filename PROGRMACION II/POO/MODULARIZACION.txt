@@ -1,0 +1,1 @@
+Tener clases separadas para Usuario, Producto, Carrito, cada una en su archivo. Así, si hay un error en Carrito, no tienes que revisar todo el programa.

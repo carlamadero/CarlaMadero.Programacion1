@@ -1,0 +1,215 @@
+import java.time.LocalDateTime;
+import java.util.*;
+
+enum EstadoMesa {
+    LIBRE, RESERVADA, OCUPADA, EN_PREPARACION
+}
+
+enum Zona {
+    TERRAZA, SALON_PRINCIPAL, SALON_PRIVADO
+}
+
+enum Turno {
+    ALMUERZO, CENA
+}
+
+class Mesa {
+    String id;
+    int capacidad;
+    Zona zona;
+    EstadoMesa estado;
+
+    public Mesa(String id, int capacidad, Zona zona) {
+        this.id = id;
+        this.capacidad = capacidad;
+        this.zona = zona;
+        this.estado = EstadoMesa.LIBRE;
+    }
+
+    public String obtenerIcono() {
+        if (estado == EstadoMesa.LIBRE) {
+            return "🟢";
+        } else if (estado == EstadoMesa.RESERVADA) {
+            return "🟡";
+        } else if (estado == EstadoMesa.OCUPADA) {
+            return "🔴";
+        } else if (estado == EstadoMesa.EN_PREPARACION) {
+            return "🔵";
+        } else {
+            return " ";
+        }
+    }
+}
+
+class Reserva {
+    String cliente;
+    LocalDateTime fechaHora;
+    int comensales;
+    String preferencias;
+    Mesa mesa;
+
+    public Reserva(String cliente, LocalDateTime fechaHora, int comensales, String preferencias, Mesa mesa) {
+        this.cliente = cliente;
+        this.fechaHora = fechaHora;
+        this.comensales = comensales;
+        this.preferencias = preferencias;
+        this.mesa = mesa;
+    }
+}
+
+class Pedido {
+    Mesa mesa;
+    List<String> platos;
+    LocalDateTime horaPedido;
+    LocalDateTime horaPreparado;
+    LocalDateTime horaServido;
+
+    public Pedido(Mesa mesa) {
+        this.mesa = mesa;
+        this.platos = new ArrayList<>();
+        this.horaPedido = LocalDateTime.now();
+    }
+
+    public void agregarPlato(String plato) {
+        platos.add(plato);
+    }
+}
+
+class Empleado {
+    String nombre;
+    String rol;
+    boolean disponible;
+
+    public Empleado(String nombre, String rol, boolean disponible) {
+        this.nombre = nombre;
+        this.rol = rol;
+        this.disponible = disponible;
+    }
+
+    public String obtenerEstado() {
+        if (disponible) {
+            return "🟢";
+        } else {
+            return "🔴";
+        }
+    }
+}
+
+public class RestauranteGourmet {
+    List<Mesa> mesas = new ArrayList<>();
+    List<Reserva> reservas = new ArrayList<>();
+    Queue<String> listaEspera = new LinkedList<>();
+    List<Empleado> personal = new ArrayList<>();
+    Map<String, Integer> tiemposCocina = new HashMap<>();
+
+    public RestauranteGourmet() {
+        inicializarMesas();
+        inicializarPersonal();
+        inicializarTiemposCocina();
+    }
+
+    private void inicializarMesas() {
+        mesas.add(new Mesa("T1-2", 2, Zona.TERRAZA));
+        mesas.add(new Mesa("T2-2", 2, Zona.TERRAZA));
+        mesas.add(new Mesa("T3-4", 4, Zona.TERRAZA));
+        mesas.add(new Mesa("T4-4", 4, Zona.TERRAZA));
+        mesas.add(new Mesa("T5-6", 6, Zona.TERRAZA));
+        mesas.add(new Mesa("T6-2", 2, Zona.SALON_PRINCIPAL));
+        mesas.add(new Mesa("T7-2", 2, Zona.SALON_PRINCIPAL));
+        mesas.add(new Mesa("T8-4", 4, Zona.SALON_PRINCIPAL));
+        mesas.add(new Mesa("T9-8", 8, Zona.SALON_PRIVADO));
+        mesas.add(new Mesa("T10-4", 4, Zona.SALON_PRIVADO));
+        mesas.add(new Mesa("P1-2", 2, Zona.TERRAZA));
+        mesas.add(new Mesa("P2-2", 2, Zona.TERRAZA));
+        mesas.add(new Mesa("P3-4", 4, Zona.SALON_PRINCIPAL));
+        mesas.add(new Mesa("P4-4", 4, Zona.SALON_PRINCIPAL));
+        mesas.add(new Mesa("P5-6", 6, Zona.SALON_PRIVADO));
+        mesas.add(new Mesa("Z1-2", 2, Zona.SALON_PRIVADO));
+        mesas.add(new Mesa("Z2-2", 2, Zona.SALON_PRIVADO));
+        mesas.add(new Mesa("Z3-4", 4, Zona.SALON_PRIVADO));
+        mesas.add(new Mesa("Z4-4", 4, Zona.SALON_PRIVADO));
+        mesas.add(new Mesa("Z5-8", 8, Zona.SALON_PRIVADO));
+
+        for (Mesa m : mesas) {
+            m.estado = EstadoMesa.OCUPADA;
+        }
+        mesas.get(0).estado = EstadoMesa.LIBRE;
+        mesas.get(6).estado = EstadoMesa.LIBRE;
+        mesas.get(12).estado = EstadoMesa.RESERVADA;
+        mesas.get(16).estado = EstadoMesa.EN_PREPARACION;
+    }
+
+    private void inicializarPersonal() {
+        personal.add(new Empleado("Chef", "Chef", false));
+        personal.add(new Empleado("Ayudante1", "Ayudante Cocina", false));
+        personal.add(new Empleado("Ayudante2", "Ayudante Cocina", true));
+    }
+
+    private void inicializarTiemposCocina() {
+        tiemposCocina.put("Entrantes_Pendientes", 4);
+        tiemposCocina.put("Entrantes_EnPreparacion", 3);
+        tiemposCocina.put("Principales_Pendientes", 8);
+        tiemposCocina.put("Principales_EnPreparacion", 5);
+        tiemposCocina.put("Postres_EnPreparacion", 2);
+    }
+
+    public void imprimirDashboard() {
+        System.out.println("DASHBOARD RESTAURANTE GOURMET - FECHA: 15/06/2025");
+        System.out.println("--------------------------------------------------");
+        System.out.println("ESTADO ACTUAL: 20:45 - TURNO CENA");
+
+        long ocupadas = 0;
+        for (Mesa m : mesas) {
+            if (m.estado == EstadoMesa.OCUPADA) {
+                ocupadas++;
+            }
+        }
+
+        double porcentaje = (ocupadas / 20.0) * 100;
+        System.out.println("Ocupación: " + Math.round(porcentaje) + "% (" + ocupadas + "/20 mesas)");
+        System.out.println("Próximas llegadas: 2 (21:00), 1 (21:15)");
+        System.out.println("Lista de espera: 3 grupos\n");
+        System.out.println("DISTRIBUCIÓN DE MESAS:");
+
+        for (Mesa m : mesas) {
+            System.out.print("[" + m.id + ":" + m.obtenerIcono() + "] ");
+        }
+
+        System.out.println("\n\nLEYENDA: 🟢Libre 🟡Reservada 🔴Ocupada 🔵En preparación\n");
+        System.out.println("TIEMPOS CRÍTICOS:");
+        System.out.println("• Mesa T3: 90min (riesgo de retraso)");
+        System.out.println("• Mesa P5: 110min (20min sobre tiempo esperado)\n");
+        System.out.println("ESTADO COCINA:");
+
+        int entrantesPendientes = tiemposCocina.get("Entrantes_Pendientes");
+        int entrantesEnPreparacion = tiemposCocina.get("Entrantes_EnPreparacion");
+        int principalesPendientes = tiemposCocina.get("Principales_Pendientes");
+        int principalesEnPreparacion = tiemposCocina.get("Principales_EnPreparacion");
+        int postresEnPreparacion = tiemposCocina.get("Postres_EnPreparacion");
+
+        System.out.println("Entrantes: " + entrantesPendientes + " pendientes, " + entrantesEnPreparacion + " en preparación");
+        System.out.println("Principales: " + principalesPendientes + " pendientes, " + principalesEnPreparacion + " en preparación");
+        System.out.println("Postres: " + postresEnPreparacion + " en preparación");
+
+        System.out.print("Personal: ");
+        for (int i = 0; i < personal.size(); i++) {
+            Empleado e = personal.get(i);
+            System.out.print(e.nombre + "(" + e.obtenerEstado() + ")");
+            if (i < personal.size() - 1) {
+                System.out.print(", ");
+            }
+        }
+
+        System.out.println("\n");
+        System.out.println("PRÓXIMAS RESERVAS:");
+        System.out.println("21:00 - García (4pax) - Mesa P3");
+        System.out.println("21:00 - Martínez (6pax) - Mesa T5");
+        System.out.println("21:15 - Rodríguez (2pax) - Mesa Z1");
+        System.out.println("--------------------------------------------------");
+    }
+
+    public static void main(String[] args) {
+        RestauranteGourmet restaurante = new RestauranteGourmet();
+        restaurante.imprimirDashboard();
+    }
+}

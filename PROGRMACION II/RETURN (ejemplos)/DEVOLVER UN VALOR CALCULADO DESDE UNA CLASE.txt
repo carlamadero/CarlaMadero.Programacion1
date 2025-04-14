@@ -1,0 +1,20 @@
+public class Rectangulo {
+    double base;
+    double altura;
+
+    public Rectangulo(double base, double altura) {
+        this.base = base;
+        this.altura = altura;
+    }
+
+    public double calcularArea() {
+        return base * altura; // Retorna el área
+    }
+
+    public static void main(String[] args) {
+        Rectangulo r = new Rectangulo(4, 5);
+        System.out.println("Área: " + r.calcularArea()); // Área: 20.0
+    }
+}
+
+//En este caso, el método calcularArea() usa return para devolver el resultado del cálculo.

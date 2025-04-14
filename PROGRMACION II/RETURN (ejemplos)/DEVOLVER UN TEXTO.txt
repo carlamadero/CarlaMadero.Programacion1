@@ -1,0 +1,11 @@
+public class Saludo {
+    public static String obtenerSaludo(String nombre) {
+        return "Hola, " + nombre + "!";
+    }
+
+    public static void main(String[] args) {
+        String saludo = obtenerSaludo("Ana");
+        System.out.println(saludo); // Imprime: Hola, Ana!
+    }
+}
+

@@ -1,0 +1,12 @@
+public class Auto {
+    public void encender() {
+        // lógica interna oculta
+    }
+}
+
+
+//Quien usa el objeto solo llama auto.encender(), sin preocuparse de los cables, batería, etc.
+
+// encender: variable
+//auto: clase
+//void: objeto

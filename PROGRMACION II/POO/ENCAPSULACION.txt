@@ -1,0 +1,16 @@
+public class Persona {
+    private String nombre;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        if (!nombre.isEmpty()) {
+            this.nombre = nombre;
+        }
+    }
+}
+
+//Aquí el atributo está protegido y solo puede cambiarse de forma controlada.
+

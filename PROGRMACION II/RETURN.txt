@@ -1,0 +1,20 @@
+// EJEMPLO SIMPLE
+
+public int sumar(int a, int b) {
+    return a + b;
+}
+
+//  Aquí, el método sumar devuelve el resultado de a + b usando return.
+
+// si tu haces esto:
+
+int resultado = sumar(5, 3);
+System.out.println(resultado); // Imprime: 8
+
+// El método devuelve 8, y ese valor se guarda en la variable resultado.
+
+// SI EL METODO NO DEVUELVE NADA
+
+public void saludar() {
+    System.out.println("¡Hola!");
+}

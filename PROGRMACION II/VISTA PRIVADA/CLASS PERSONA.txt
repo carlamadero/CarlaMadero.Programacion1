@@ -1,0 +1,40 @@
+public class Persona {
+
+    // 1. Atributos privados
+    private String nombre;
+    private int edad;
+
+    // 2. Constructor público
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre; // uso de this
+        this.edad = edad;
+    }
+
+    // 3. Método público para mostrar información
+    public void mostrarInformacion() {
+        mostrarSaludo();  // llamado a método privado
+        mostrarEdad();
+        mostrarSaludo("¡Bienvenido!");  // método privado sobrecargado
+    }
+
+    // 4. Métodos privados
+    private void mostrarSaludo() {
+        System.out.println("Hola, mi nombre es " + nombre + ".");
+    }
+
+    // 5. Redefinición (sobrecarga) del método privado
+    private void mostrarSaludo(String mensaje) {
+        System.out.println(mensaje + " Soy " + nombre + ".");
+    }
+
+    private void mostrarEdad() {
+        System.out.println("Tengo " + edad + " años.");
+    }
+}
+
+
+//SALIDA AL EJECUTAR
+
+Hola, mi nombre es Ana.
+Tengo 30 años.
+¡Bienvenido! Soy Ana.
