@@ -1,0 +1,106 @@
+import java.util.*;
+
+public class RetoCCCF {
+
+    static final int HORAS_JORNADA = 12; // 9AM a 9PM
+    static final int MINUTOS_JORNADA = HORAS_JORNADA * 60; // 720 minutos
+    static final int PROBABILIDAD_LLEGADA = 60; // 60% por minuto
+    static final int MIN_PACKS = 5;
+    static final int MAX_PACKS = 15;
+    static final int COLA_MAXIMA_SIN_EXTRA_CAJA = 15;
+    static final int EXTRA_CAJA_MIN_ATENCIONES = 5;
+    static final int MAX_CAJAS = 6;
+
+    static Random rand = new Random();
+
+    static class Cliente {
+        int packs;
+
+        Cliente() {
+            this.packs = rand.nextInt(MAX_PACKS - MIN_PACKS + 1) + MIN_PACKS;
+        }
+    }
+
+    static class Caja {
+        int tiempoRestante = 0;
+        int atendidos = 0;
+        int itemsProcesados = 0;
+
+        void asignarCliente(Cliente cliente) {
+            tiempoRestante = cliente.packs;
+            atendidos++;
+            itemsProcesados += cliente.packs;
+        }
+
+        void procesar() {
+            if (tiempoRestante > 0) {
+                tiempoRestante--;
+            }
+        }
+
+        boolean estaLibre() {
+            return tiempoRestante == 0;
+        }
+    }
+
+    public static void main(String[] args) {
+        Queue<Cliente> cola = new LinkedList<>();
+        List<Caja> cajas = new ArrayList<>();
+        for (int i = 0; i < 4; i++) cajas.add(new Caja());
+
+        int minutosColaVacia = 0;
+        int totalPersonasAtendidas = 0;
+        int totalItemsVendidos = 0;
+
+        for (int minuto = 1; minuto <= MINUTOS_JORNADA; minuto++) {
+
+            boolean llegaCliente = rand.nextInt(100) < PROBABILIDAD_LLEGADA;
+            if (llegaCliente) {
+                cola.add(new Cliente());
+            }
+
+            // Tratar cajas
+            for (Caja caja : cajas) {
+                caja.procesar();
+                if (caja.estaLibre() && !cola.isEmpty()) {
+                    caja.asignarCliente(cola.poll());
+                }
+            }
+
+            // Ver si se necesita una caja extra
+            if (cola.size() > COLA_MAXIMA_SIN_EXTRA_CAJA && cajas.size() < MAX_CAJAS) {
+                Caja nuevaCaja = new Caja();
+                cajas.add(nuevaCaja);
+                int atendidosExtra = 0;
+                while (atendidosExtra < EXTRA_CAJA_MIN_ATENCIONES && !cola.isEmpty()) {
+                    nuevaCaja.asignarCliente(cola.poll());
+                    atendidosExtra++;
+                }
+            }
+
+            // Imprimir estado
+            System.out.printf("MINUTO %d - %s - En Cola: %d\n", minuto,
+                llegaCliente ? "Llega 1 persona" : "No llega nadie", cola.size());
+            for (int i = 0; i < cajas.size(); i++) {
+                System.out.printf("Caja%d:[%d] | ", i + 1, cajas.get(i).tiempoRestante);
+            }
+            System.out.println("\n-------------------------------------------------------------");
+
+            if (cola.isEmpty()) minutosColaVacia++;
+        }
+
+        // Resumen
+        for (Caja caja : cajas) {
+            totalPersonasAtendidas += caja.atendidos;
+            totalItemsVendidos += caja.itemsProcesados;
+        }
+
+        System.out.println("RESUMEN");
+        System.out.println("============================================================");
+        System.out.printf("Minutos con cola en cero   \t  : %d\n", minutosColaVacia);
+        System.out.printf("Personas en la cola al cierre : %d\n", cola.size());
+        System.out.printf("Personas atendidas en el dia  : %d\n", totalPersonasAtendidas);
+        System.out.printf("Articulos vendidos en el dia  : %d\n", totalItemsVendidos);
+        System.out.println("============================================================");
+    }
+}

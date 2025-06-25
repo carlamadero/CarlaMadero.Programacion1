@@ -1,0 +1,38 @@
+// RESUELVE UNA ECUACION DE SEGUNDO GRADO
+
+import java.util.Scanner;
+
+public class EcuacionCuadratica {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese el coeficiente a: ");
+        double a = scanner.nextDouble();
+
+        System.out.print("Ingrese el coeficiente b: ");
+        double b = scanner.nextDouble();
+
+        System.out.print("Ingrese el coeficiente c: ");
+        double c = scanner.nextDouble();
+
+        double discriminante = b * b - 4 * a * c;
+
+        if (a == 0) {
+            System.out.println("No es una ecuación de segundo grado (a no puede ser 0).");
+        } else if (discriminante > 0) {
+            double raiz1 = (-b + Math.sqrt(discriminante)) / (2 * a);
+            double raiz2 = (-b - Math.sqrt(discriminante)) / (2 * a);
+            System.out.println("Raíces reales y diferentes:");
+            System.out.println("x1 = " + raiz1);
+            System.out.println("x2 = " + raiz2);
+        } else if (discriminante == 0) {
+            double raiz = -b / (2 * a);
+            System.out.println("Raíces reales e iguales:");
+            System.out.println("x = " + raiz);
+        } else {
+            System.out.println("Raíces complejas (no reales).");
+        }
+
+        scanner.close();
+    }
+}

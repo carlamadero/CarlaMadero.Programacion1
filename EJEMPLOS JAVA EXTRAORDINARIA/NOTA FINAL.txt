@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class NotaFinal {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nota del examen parcial: ");
+        double parcial = scanner.nextDouble();
+
+        System.out.print("Nota del examen final: ");
+        double examenFinal = scanner.nextDouble();
+
+        System.out.print("Evaluación continua: ");
+        double continua = scanner.nextDouble();
+
+        System.out.print("Evaluación del profesor: ");
+        double profesor = scanner.nextDouble();
+
+        double notaFinal = parcial * 0.25 + examenFinal * 0.4 + continua * 0.25 + profesor * 0.1;
+
+        System.out.println("Su nota final es: " + notaFinal);
+        scanner.close();
+    }
+}

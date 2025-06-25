@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class NotaNecesariaExamenFinal {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nota del examen parcial: ");
+        double parcial = scanner.nextDouble();
+
+        System.out.print("Evaluación continua: ");
+        double continua = scanner.nextDouble();
+
+        System.out.print("Nota final deseada: ");
+        double notaDeseada = scanner.nextDouble();
+
+        double evaluacionProfesor = 5.0;
+
+        double necesariaFinal = (notaDeseada - (parcial * 0.25 + continua * 0.25 + evaluacionProfesor * 0.1)) / 0.4;
+
+        System.out.println("Debe sacar " + necesariaFinal + " en el examen final.");
+        scanner.close();
+    }
+}

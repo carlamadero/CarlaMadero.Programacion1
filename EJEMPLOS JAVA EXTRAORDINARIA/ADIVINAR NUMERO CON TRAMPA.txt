@@ -1,0 +1,100 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class AdivinaNumeroMetodos {
+
+    static final int MAX_INTENTOS = 5;
+    static final int LIMITE_INFERIOR = 1;
+    static final int LIMITE_SUPERIOR = 100;
+
+    static int numeroPensado;
+    static int intentos = 0;
+    static int intentosCalientesSeguidos = 0;
+    static boolean acerto = false;
+
+    static Random random = new Random();
+    static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        iniciarJuego();
+
+        while (intentos < MAX_INTENTOS && !acerto) {
+            int intentoUsuario = pedirIntento();
+            procesarIntento(intentoUsuario);
+        }
+
+        mostrarResultadoFinal();
+        scanner.close();
+    }
+
+    static void iniciarJuego() {
+        numeroPensado = random.nextInt(LIMITE_SUPERIOR) + 1;
+        intentos = 0;
+        acerto = false;
+        System.out.println("¡Bienvenido al juego de adivina el número!");
+        System.out.println("Estoy pensando en un número del " + LIMITE_INFERIOR + " al " + LIMITE_SUPERIOR + ".");
+        System.out.println("Tienes " + MAX_INTENTOS + " intentos para adivinarlo.\n");
+    }
+
+    static int pedirIntento() {
+        System.out.print("Intento #" + (intentos + 1) + ": ¿Cuál es tu número? ");
+        return scanner.nextInt();
+    }
+
+    static void procesarIntento(int intentoUsuario) {
+        intentos++;
+        int diferencia = Math.abs(numeroPensado - intentoUsuario);
+
+        if (intentoUsuario == numeroPensado) {
+            acerto = true;
+        } else {
+            darPistas(intentoUsuario, diferencia);
+            verificarTrampa();
+        }
+        System.out.println();
+    }
+
+    static void darPistas(int intentoUsuario, int diferencia) {
+        if (intentoUsuario < numeroPensado) {
+            System.out.println("Pista: Es mayor.");
+        } else {
+            System.out.println("Pista: Es menor.");
+        }
+
+        if (diferencia <= 5) {
+            System.out.println("🔥 Estás CALIENTE.");
+            intentosCalientesSeguidos++;
+        } else if (diferencia <= 10) {
+            System.out.println("🌤️ Estás TIBIO.");
+            intentosCalientesSeguidos = 0;
+        } else {
+            System.out.println("❄️ Estás FRÍO.");
+            intentosCalientesSeguidos = 0;
+        }
+    }
+
+    static void verificarTrampa() {
+        if (intentosCalientesSeguidos >= 2) {
+            int cambio = random.nextInt(5) + 1;
+            boolean sumar = random.nextBoolean();
+
+            if (sumar && numeroPensado + cambio <= LIMITE_SUPERIOR) {
+                numeroPensado += cambio;
+            } else if (!sumar && numeroPensado - cambio >= LIMITE_INFERIOR) {
+                numeroPensado -= cambio;
+            }
+
+            System.out.println("🤧 El ordenador estornuda... (¡hizo trampa!)");
+            intentosCalientesSeguidos = 0;
+        }
+    }
+
+    static void mostrarResultadoFinal() {
+        if (acerto) {
+            System.out.println("🎉 ¡Correcto! Adivinaste el número en el intento #" + intentos + ".");
+        } else {
+            System.out.println("😢 Lo siento, no lograste adivinar el número.");
+            System.out.println("El número era: " + numeroPensado);
+        }
+    }
+}
